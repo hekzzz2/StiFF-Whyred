@@ -2,15 +2,11 @@
 
 export KERNELNAME=StiFF 大都
 
-<<<<<<< HEAD
-export LOCALVERSION=V1
-=======
-export LOCALVERSION=V11
->>>>>>> 89a3abd0626c5b3151374fb52d857a7303f6605c
+export LOCALVERSION=V1.0
 
-export KBUILD_BUILD_USER=StiFF 大都
+export KBUILD_BUILD_USER=StiFF
 
-export KBUILD_BUILD_HOST=StiFF 大都
+export KBUILD_BUILD_HOST=Paokzzz
 
 export TOOLCHAIN=clang
 
