@@ -4365,7 +4365,7 @@ static int hdmi_tx_post_evt_handle_unblank(struct hdmi_tx_ctrl *hdmi_ctrl)
 
 static int hdmi_tx_post_evt_handle_resume(struct hdmi_tx_ctrl *hdmi_ctrl)
 {
-	int rc = 0;
+	int = 0;
 
 	if (!hdmi_ctrl->hpd_feature_on)
 		return 0;
@@ -4387,7 +4387,7 @@ static int hdmi_tx_post_evt_handle_resume(struct hdmi_tx_ctrl *hdmi_ctrl)
 
 static int hdmi_tx_post_evt_handle_panel_on(struct hdmi_tx_ctrl *hdmi_ctrl)
 {
-	int rc = 0;
+	int = 0;
 
 	if (hdmi_ctrl->panel_suspend) {
 		pr_debug("panel suspend has triggered\n");
