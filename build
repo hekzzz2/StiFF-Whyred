@@ -1,16 +1,16 @@
 #!/bin/bash
 
-export KERNELNAME=Deagle
+export KERNELNAME=Muadz 
 
-export LOCALVERSION=V5
+export LOCALVERSION=V69
 
-export KBUILD_BUILD_USER=builder
+export KBUILD_BUILD_USER=Muadz
 
-export KBUILD_BUILD_HOST=deagle
+export KBUILD_BUILD_HOST=paokzzz
 
 export TOOLCHAIN=clang
 
-export DEVICES=whyred,tulip,wayne
+export DEVICES=whyred
 
 source helper
 
@@ -22,9 +22,9 @@ START=$(date +"%s")
 
 for i in ${DEVICES//,/ }
 do
-	build ${i} -oldcam 
+	build ${i} -OC
 
-	build ${i} -newcam
+	build ${i} -NC
 done
 
 send_msg "Build OC..."
@@ -35,9 +35,9 @@ for i in ${DEVICES//,/ }
 do
 	if [ $i == "whyred" ] || [ $i == "tulip" ]
 	then
-		build ${i} -oldcam -overclock
+		build ${i} -OC -OC
 
-		build ${i} -newcam -overclock
+		build ${i} -OC -NC
 	fi
 done
 
