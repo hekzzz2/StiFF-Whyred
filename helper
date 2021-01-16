@@ -5,6 +5,7 @@ DATE=$(date +"%m%d-%H%M")
 make_build(){
 	print "Make kernel dtb..." green
 	if [ $TOOLCHAIN == clang ]; then
+		export KBUILD_COMPILER_STRING=$(clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
 		PATH="$(pwd)/clang/bin:${PATH}"
 		make O=out ARCH=arm64 $1
 		make -j$(nproc --all) O=out \
@@ -26,7 +27,7 @@ make_build(){
 }
 
 make_clean(){
-	rm -rf /out
+	rm -rf out
 }
 
 send_msg(){
@@ -40,7 +41,7 @@ send_msg(){
 send_file(){
 	print "Sending file..." green
 	curl -F chat_id="${chat_id}" \
-		-F caption="Type: ${type} | SHA1SUM : $(sha1sum ${file} | awk '{ print $1 }')" \
+		-F caption="DEVICE: ${type} | SHA1 : $(sha1sum ${file} | awk '{ print $1 }')" \
 		-F document=@"${1}" \
 		 https://api.telegram.org/bot"${bot_token}"/sendDocument
 }
@@ -88,7 +89,7 @@ gen_toolchain(){
 
 build_nonoc(){
 
-	export type="${2} nonoc"
+	export type="${1} nonoc"
 
 	make_clean
 
@@ -103,13 +104,13 @@ build_nonoc(){
 
 build_oc(){
 
-	export type="${2} oc"
+	export type="${1} oc"
 
 	make_clean
 
 	git apply oc.patch
 
-	if [ ! $1 == "wayne" ]
+	if [ ! $1 == "whyred" ]
 	then
 		if [ $2 == "oldcam" ]
 		then
